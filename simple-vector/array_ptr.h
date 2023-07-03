@@ -23,8 +23,24 @@ public:
     {
     }
 
+    ArrayPtr(ArrayPtr&& other)  noexcept {
+        raw_ptr_ = std::exchange(other.raw_ptr_, nullptr);
+    }
+
+    ArrayPtr& operator=(ArrayPtr&& rhs) {
+        if (this == &rhs) {
+            return *this;
+        }
+        raw_ptr_ =rhs.raw_ptr_;
+        rhs.raw_ptr_ = nullptr;
+        return *this;
+
+    }
+
     // Запрещаем копирование
     ArrayPtr(const ArrayPtr&) = delete;
+
+
 
     ~ArrayPtr() {
         delete[] raw_ptr_;
