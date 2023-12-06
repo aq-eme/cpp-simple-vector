@@ -86,3 +86,4 @@ public:
 private:
     Type* raw_ptr_ = nullptr;
 };
+

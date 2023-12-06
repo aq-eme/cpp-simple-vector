@@ -363,3 +363,4 @@ template <typename Type>
 inline bool operator>=(const SimpleVector<Type>& lhs, const SimpleVector<Type>& rhs) {
     return !(lhs < rhs);
 }
+
